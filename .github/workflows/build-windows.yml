@@ -33,13 +33,7 @@ jobs:
           host: "windows"
           target: "desktop"
           arch: "win64_msvc2019_64"
-          modules: "qtmultimedia qtsvg qttools"
-
-      - name: Generate translation files
-        shell: pwsh
-        run: |
-          lrelease translations\language_en.ts -qm translations\language_en.qm
-          lrelease translations\language_ru.ts -qm translations\language_ru.qm
+          modules: "qtmultimedia"
 
       - name: Configure (Release)
         shell: pwsh

@@ -13,7 +13,5 @@
     <qresource prefix="/translations">
         <file>translations/language_en.ts</file>
         <file>translations/language_ru.ts</file>
-        <file>translations/language_en.qm</file>
-        <file>translations/language_ru.qm</file>
     </qresource>
 </RCC>
