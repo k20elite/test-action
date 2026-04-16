@@ -16,16 +16,15 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup MSVC environment
-        uses: ilammy/msvc-dev-cmd@v1
+        uses: actions/checkout@v5
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -38,7 +37,8 @@ jobs:
       - name: Install Qt 6.5.3 (MSVC 2022)
         shell: pwsh
         run: |
-          python -m aqt install-qt windows desktop 6.5.3 win64_msvc2022_64 -m qttools qtsvg qtmultimedia qttranslations
+          python -m aqt list-qt windows desktop --modules 6.5.3 win64_msvc2022_64
+          python -m aqt install-qt windows desktop 6.5.3 win64_msvc2022_64 -m qttools qtsvg qtmultimedia
 
       - name: Generate translation files
         shell: pwsh
@@ -68,7 +68,7 @@ jobs:
           Compress-Archive -Path dist\* -DestinationPath release-windows.zip
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: 120fps-method-windows-release
           path: release-windows.zip
