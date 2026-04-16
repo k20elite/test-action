@@ -32,7 +32,7 @@ jobs:
           version: "6.5.3"
           host: "windows"
           target: "desktop"
-          arch: "win64_msvc2022_64"
+          arch: "win64_msvc2019_64"
           modules: "qtmultimedia qtsvg qttools"
 
       - name: Generate translation files
