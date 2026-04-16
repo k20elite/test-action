@@ -7,6 +7,11 @@ qt_standard_project_setup()
 
 qt_add_resources(QRC_FILES resources.qrc)
 
+set(APP_RC_FILE "")
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/file.rc")
+    set(APP_RC_FILE file.rc)
+endif()
+
 qt_add_executable(120fps-method
     WIN32 MACOSX_BUNDLE
     main.cpp
@@ -14,7 +19,7 @@ qt_add_executable(120fps-method
     mainwindow.h
     mainwindow.ui
     hovereventfilter.h
-    file.rc
+    ${APP_RC_FILE}
     ${QRC_FILES}
 )
 
