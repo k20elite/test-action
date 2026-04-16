@@ -48,7 +48,7 @@ jobs:
       - name: Install app bundle
         shell: pwsh
         run: |
-          cmake --install build\release --config Release --prefix dist
+          cmake --install build\release --config Release --prefix "${{ github.workspace }}\dist"
 
       - name: Package artifact
         shell: pwsh
